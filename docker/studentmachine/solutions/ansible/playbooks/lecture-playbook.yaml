@@ -1,0 +1,7 @@
+---
+- hosts: studentlab
+  become: yes
+  gather_facts: yes
+
+  roles:
+    - { role: message-of-the-day,                   become_user: root             , tags: motd   }

@@ -1,0 +1,14 @@
+---
+- name This is a test role, which copies a file to a PC to the /tmp directory
+  copy:
+    src: files/testfile.sh
+    dest: /tmp
+    owner: student
+    group: student
+    mode: '0755'
+
+- name Put user {{ pool_user }} into docker group
+  user: 
+    name: student
+    groups: docker
+    append: yes

@@ -1,0 +1,11 @@
+########################################################
+## sitlecture studentlab inventory                    ##
+##                                                    ##
+## Contact: Frank Gut		                      ##
+########################################################
+
+[studentlab]
+put_in_right_hostname_here   ansible_ssh_user=student ansible_ssh_pass=student ansible_sudo_pass=student
+
+[all:children]
+studentlab

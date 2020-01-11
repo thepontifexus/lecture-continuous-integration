@@ -1,0 +1,8 @@
+---
+- hosts: all
+  become: yes
+  gather_facts: yes
+
+  roles:
+    - { role: <put-your-role-name-here>, become_user: root , tags: motd }
+

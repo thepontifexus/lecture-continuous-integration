@@ -1,0 +1,17 @@
+---
+- name: Deploy own motd file # Excercise 3
+  copy:
+    src: files/motd
+    dest: /etc/motd
+    owner: root
+    group: root
+    mode: 0644
+
+- name: Deploy own motd file with group info {{ group }} # Excercise 4
+  template:
+    src: templates/motd.j2
+    dest: /etc/motd
+    owner: root
+    group: root
+    mode: 0644
+
