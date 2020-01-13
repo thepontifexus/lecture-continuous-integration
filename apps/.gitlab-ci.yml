@@ -1,0 +1,19 @@
+image: docker/compose:latest
+
+before_script:
+  - docker info
+
+talker:
+  stage: build
+  script:
+    - cd talker && docker build -t talker .
+
+listener:
+  stage: build
+  script:
+    - cd listener && docker build -t listener .
+
+prod:
+  stage: deploy
+  script:
+    - docker-compose up -d

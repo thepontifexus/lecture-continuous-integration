@@ -1,5 +1,6 @@
-From ubuntu:18.04
-MAINTAINER Frank Gut 
+#From localhost:5000/studentmachine
+From  ros:melodic-ros-core
+MAINTAINER Frank Gut <info@fdoelitzscher.de>
 
 User root
 
@@ -37,7 +38,7 @@ RUN chown -R student:student /home/student/.ssh
 ADD ansible /home/student/ansible
 RUN chown -R student:student /home/student/ansible
 ADD files/studentmachine_motd /etc/motd
-RUN cat /etc/motd >> /etc/bash.bashrc
+RUN echo "cat /etc/motd" >> /etc/bash.bashrc
 
 EXPOSE 22
 
