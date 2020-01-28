@@ -1,0 +1,40 @@
+version: '2'
+
+networks:
+  ros:
+    driver: bridge
+
+# TODO: Replace all instances of 'master' with your team name
+#       to make service names unique
+services:
+  ros-core-01:
+    image: ros:melodic-ros-core
+    command: stdbuf -o L roscore
+    networks:
+      - ros
+    restart: always
+
+  talker-01:
+    image: talker_01:latest
+    depends_on:
+      - ros-core-01
+    environment:
+      - "ROS_MASTER_URI=http://ros-core-01:11311"
+      - "ROS_HOSTNAME=talker_01"
+    command: /bin/bash -c "source devel/setup.bash && rosrun talker talker "
+    networks:
+      - ros
+    restart: always
+
+  listener-01:
+    image: listener_01:latest
+    depends_on:
+      - ros-core-01
+    environment:
+      - "ROS_MASTER_URI=http://ros-core-01:11311"
+      - "ROS_HOSTNAME=listener_01"
+    command: /bin/bash -c "source devel/setup.bash && rosrun listener listener"
+    networks:
+      - ros
+    restart: always
+

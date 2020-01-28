@@ -35,6 +35,7 @@ RUN useradd -c "student" \
 RUN mkdir /home/student/.ssh
 ADD .ssh/ /home/student/.ssh
 RUN chown -R student:student /home/student/.ssh
+RUN chmod 600 /home/student/.ssh/id_rsa
 ADD ansible /home/student/ansible
 RUN chown -R student:student /home/student/ansible
 ADD files/studentmachine_motd /etc/motd

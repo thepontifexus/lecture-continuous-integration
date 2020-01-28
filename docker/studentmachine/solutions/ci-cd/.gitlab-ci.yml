@@ -1,0 +1,25 @@
+image: docker/compose:latest
+
+before_script:
+  - docker info
+
+talker:
+  stage: build
+  script:
+    - echo "Build talker application here"
+    - cd talker
+    - docker build -t talker_01:latest .
+
+listener:
+  stage: build
+  script:
+   - echo "Build listener application here"
+   - cd listener
+   - docker build -t listener_01:latest .
+
+prod:
+  stage: deploy
+  script:
+   - echo "Deploy all applications here"
+   - docker-compose up
+

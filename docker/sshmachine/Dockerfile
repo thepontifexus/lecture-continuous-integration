@@ -1,6 +1,6 @@
 #From localhost:5000/ubuntu1804
 From ubuntu:18.04
-MAINTAINER Frank Gut <info@fdoelitzscher.de>
+MAINTAINER Frank Gut 
 
 Run apt-get update -q 
 
@@ -24,12 +24,13 @@ RUN useradd -c "student" \
 RUN mkdir /home/student/.ssh
 ADD .ssh/ /home/student/.ssh
 RUN chown -R student:student /home/student/.ssh
+RUN chmod 600 /home/student/.ssh/id_rsa
 
-#RUN apt-get clean && \
-#    rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+RUN apt-get clean && \
+    rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 ADD files/sshmachine_motd /etc/motd
-RUN cat /etc/motd >> /etc/bash.bashrc
+RUN echo "cat /etc/motd" >> /etc/bash.bashrc
 
 EXPOSE 22
 
