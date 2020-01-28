@@ -1,6 +1,6 @@
 #From localhost:5000/studentmachine
 From  ros:melodic-ros-core
-MAINTAINER Frank Gut <info@fdoelitzscher.de>
+MAINTAINER Frank Gut 
 
 User root
 
